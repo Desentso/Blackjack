@@ -34,4 +34,13 @@ public class Card {
         }
     }
     
+    public int rawValue(){
+        
+        return this.value;
+    }
+    
+    public Symbol getSymbol(){
+        
+        return this.symbol;
+    }
 }

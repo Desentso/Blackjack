@@ -42,7 +42,6 @@ public class Game {
         Deck deck1 = new Deck();
         
         
-        
         while(deck1.hasCards()){
             
             Hand playerHand = new Hand();
@@ -63,7 +62,6 @@ public class Game {
             if (playerHand.value() == 21){
                 
                 System.out.println("Player has BLACKJACK");
-                continue;
             }
             this.playerTurn = true;
             

@@ -43,7 +43,7 @@ public class Draw extends JPanel{
         g2d.drawString("Dealer Cards:", 0, 10);
         g2d.drawString("Player Cards: ", 0, 140);
         
-        String path = "E:/Käyttäjät/Tiedostot/Nettisivu/New blog site/Images/photo1.jpg";
+        String path = "E:/JavaProjects/Blackjack/images/Heart2.jpg";
         
         Image image = Toolkit.getDefaultToolkit().getImage(path);
         
