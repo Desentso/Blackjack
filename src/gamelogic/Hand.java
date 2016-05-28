@@ -16,12 +16,12 @@ import java.util.HashMap;
 public class Hand {
     
     private ArrayList<Card> cards;
-    private boolean aceUsed;
+    private int acesUsed;
     
     public Hand(){
       
         this.cards = new ArrayList<>();
-        this.aceUsed = false;
+        this.acesUsed = 0;
     }
     
     public void addCard(Card card){
@@ -48,10 +48,10 @@ public class Hand {
             
         }
         
-        if (value > 21 && this.hasAce() && !this.aceUsed){
+        if (value > 21 && this.hasAce()){
             
             value = value - 10;
-            this.aceUsed = true;
+            this.acesUsed += 1;
         }
         
         return value;

@@ -40,8 +40,9 @@ public class Draw extends JPanel{
         
         Graphics2D g2d = (Graphics2D)g;
         
-        g2d.drawString("Dealer Cards:", 0, 10);
-        g2d.drawString("Player Cards: ", 0, 140);
+        g2d.setFont(new Font("default", Font.BOLD, 14));
+        g2d.drawString("Dealer:", 0, 10);
+        g2d.drawString("Player: ", 0, 260);
         
         String path = "E:/JavaProjects/Blackjack/images/Heart2.jpg";
         
@@ -51,27 +52,35 @@ public class Draw extends JPanel{
         
         //images of cards or image and adding numbers with text
         
-        int x = 50;
+        int x = 20;
         
         for(Card card : this.dealerHand.getCards()){
             
-            g2d.drawString(Integer.toString(card.getValue()), x, 50);
+            image = Toolkit.getDefaultToolkit().getImage(card.getImage());
+            g2d.drawImage(image, x, 20, 120, 165, this);
             
-            x += 20;
+            x += 140;
+           /* g2d.drawString(Integer.toString(card.getValue()), x, 50);
+            x += 20;*/
         }
         
-        x = 50;
+        x = 20;
         
         for(Card card : this.playerHand.getCards()){
             
-            g2d.drawString(Integer.toString(card.getValue()), x, 180);
+            image = Toolkit.getDefaultToolkit().getImage(card.getImage());
+            g2d.drawImage(image, x, 270, 120, 165, this);
             
-            x += 20;
+            x += 140;
+            
+            /*g2d.drawString(Integer.toString(card.getValue()), x, 180);
+            
+            x += 20;*/
         }
         
-        g2d.setFont(new Font("default", Font.BOLD, 20));
-        g2d.drawString(Integer.toString(this.dealerHand.value()), 55, 80);
-        g2d.drawString(Integer.toString(this.playerHand.value()), 55,210);
+        g2d.setFont(new Font("default", Font.BOLD, 18));
+        g2d.drawString("Total: " + Integer.toString(this.dealerHand.value()), 25, 210);
+        g2d.drawString("Total: " + Integer.toString(this.playerHand.value()), 25, 460);
         
     }
     

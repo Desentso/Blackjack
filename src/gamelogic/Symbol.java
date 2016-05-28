@@ -12,4 +12,5 @@ package gamelogic;
 public enum Symbol {
     
     HEART, DIAMOND, CLUB, SPADE
+    
 }

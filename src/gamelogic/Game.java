@@ -49,7 +49,7 @@ public class Game {
 
             this.draw.setHands(dealerHand, playerHand);
             
-            this.draw.update();
+            //this.draw.update();
             
             playerHand.addCard(deck1.dealCard());
             dealerHand.addCard(deck1.dealCard());
@@ -57,15 +57,29 @@ public class Game {
             playerHand.addCard(deck1.dealCard());
             dealerHand.addCard(deck1.dealCard());
 
+            this.draw.update();
             //System.out.println(playerHand.value());
             
             if (playerHand.value() == 21){
                 
                 System.out.println("Player has BLACKJACK");
+                
+                try {
+
+                    TimeUnit.SECONDS.sleep(2);
+                } catch (InterruptedException ex) {
+
+                    Thread.currentThread().interrupt();
+                }
+                
+                continue;
             }
+            
             this.playerTurn = true;
             
             while(this.playerTurn){
+                
+                this.draw.update();
                 
                 if(this.playerHit){
                     
