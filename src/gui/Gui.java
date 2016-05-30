@@ -88,7 +88,8 @@ public class Gui implements Runnable{
         jTextField1.setText("5");
 
         jButton3.setText("Bet");
-
+        jButton3.addActionListener(new BetButtonListener(this.game, jTextField1));
+        
         jButton1.setText("Hit");
         jButton1.addActionListener(new HitButtonListener(this.game));
         

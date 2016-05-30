@@ -6,7 +6,9 @@
 package gui;
 
 import gamelogic.Card;
+import gamelogic.Game;
 import gamelogic.Hand;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -28,9 +30,11 @@ public class Draw extends JPanel{
     
     private Hand dealerHand;
     private Hand playerHand;
+    private Game game;
     
-    public Draw(){
+    public Draw(Game game){
         
+        this.game = game;
     }
     
     @Override
@@ -42,11 +46,37 @@ public class Draw extends JPanel{
         
         g2d.setFont(new Font("default", Font.BOLD, 14));
         g2d.drawString("Dealer:", 0, 10);
-        g2d.drawString("Player: ", 0, 260);
+        g2d.drawString("You: ", 0, 260);  
         
-        String path = "E:/JavaProjects/Blackjack/images/Heart2.jpg";
+        g2d.drawString("Balance:", 405, 470);
+        g2d.drawString(this.game.getBalance(), 470, 470);
         
-        Image image = Toolkit.getDefaultToolkit().getImage(path);
+        if (this.game.noBet()){
+            
+            g2d.drawString("Set your bet!", 230, 260);
+        }
+        
+        if (this.game.win() && this.game.playerWin()){
+            
+            g2d.setFont(new Font("default", Font.BOLD, 25));
+            g2d.setColor(new Color(92,225,80));
+            g2d.drawString("You win!", 230, 240);
+        } else if (this.game.win() && this.game.push()){
+            
+            g2d.setFont(new Font("default", Font.BOLD, 25));
+            g2d.setColor(new Color(237,62,53));
+            g2d.drawString("Push!", 230, 240);
+        } else if (this.game.win()){
+            
+            g2d.setFont(new Font("default", Font.BOLD, 25));
+            g2d.setColor(new Color(237,62,53));
+            g2d.drawString("You lost!", 230, 240);    
+        }
+        
+        g2d.setColor(Color.black);
+        g2d.setFont(new Font("default", Font.BOLD, 14));
+        
+        Image image;
         
         //g2d.drawImage(image, 80, 80, 100, 150, this);
         
