@@ -84,14 +84,25 @@ public class Draw extends JPanel{
         
         int x = 20;
         
-        for(Card card : this.dealerHand.getCards()){
+        if (this.dealerHand.showCards()){
+            for(Card card : this.dealerHand.getCards()){
+
+
+                    image = Toolkit.getDefaultToolkit().getImage(card.getImage());
+                    g2d.drawImage(image, x, 20, 120, 165, this);
+
+                    x += 140;
+            }
+        } else if (this.dealerHand.getCards().size() > 0) {
             
-            image = Toolkit.getDefaultToolkit().getImage(card.getImage());
+            image = Toolkit.getDefaultToolkit().getImage(this.dealerHand.getCards().get(0).getImage());
+            g2d.drawImage(image, x, 20, 120, 165, this);
+
+            x += 140;
+            
+            image = Toolkit.getDefaultToolkit().getImage("E:/JavaProjects/Blackjack/images/Back.jpg");
             g2d.drawImage(image, x, 20, 120, 165, this);
             
-            x += 140;
-           /* g2d.drawString(Integer.toString(card.getValue()), x, 50);
-            x += 20;*/
         }
         
         x = 20;
@@ -109,7 +120,15 @@ public class Draw extends JPanel{
         }
         
         g2d.setFont(new Font("default", Font.BOLD, 18));
-        g2d.drawString("Total: " + Integer.toString(this.dealerHand.value()), 25, 210);
+        
+        if (this.dealerHand.showCards()){
+            
+            g2d.drawString("Total: " + Integer.toString(this.dealerHand.value()), 25, 210);
+        } else if (this.dealerHand.getCards().size() > 0){
+            
+            g2d.drawString("Total: " + Integer.toString(this.dealerHand.getCards().get(0).getValue()), 25, 210);
+        }
+        
         g2d.drawString("Total: " + Integer.toString(this.playerHand.value()), 25, 460);
         
     }

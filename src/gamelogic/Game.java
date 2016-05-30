@@ -60,6 +60,8 @@ public class Game {
         this.playerHand = new Hand();
         this.dealerHand = new Hand();
 
+        this.dealerHand.setShow(false);
+        
         this.draw.setHands(this.dealerHand, this.playerHand);
             
         while(deck1.hasCards()){
@@ -93,6 +95,8 @@ public class Game {
             this.playerHand = new Hand();
             this.dealerHand = new Hand();
 
+            this.dealerHand.setShow(false);
+            
             this.draw.setHands(this.dealerHand, this.playerHand);
             
             this.playerHand.addCard(deck1.dealCard());
@@ -154,6 +158,9 @@ public class Game {
                     this.dealerTurn = true;
                 }
             }
+            
+            this.dealerHand.setShow(true);
+            this.draw.update();
             
             while(this.dealerTurn){
                 

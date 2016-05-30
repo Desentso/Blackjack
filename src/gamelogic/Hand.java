@@ -17,11 +17,13 @@ public class Hand {
     
     private ArrayList<Card> cards;
     private int acesUsed;
+    private boolean show;
     
     public Hand(){
       
         this.cards = new ArrayList<>();
         this.acesUsed = 0;
+        this.show = true;
     }
     
     public void addCard(Card card){
@@ -77,6 +79,14 @@ public class Hand {
         return this.cards;
     }
     
+    public void setShow(boolean show){
+        
+        this.show = show;
+    }
     
+    public boolean showCards(){
+        
+        return this.show;
+    }
     
 }
