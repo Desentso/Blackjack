@@ -6,8 +6,6 @@
 package gamelogic;
 
 import java.util.ArrayList;
-import static java.util.Arrays.asList;
-import java.util.HashMap;
 
 /**
  *

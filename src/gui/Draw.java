@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gui;
 
 import gamelogic.Card;
@@ -14,12 +10,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -42,45 +32,45 @@ public class Draw extends JPanel{
         
         super.paintComponent(g);
         
+        this.setBackground(new Color(7,99,36));
+        
         Graphics2D g2d = (Graphics2D)g;
         
-        g2d.setFont(new Font("default", Font.BOLD, 14));
-        g2d.drawString("Dealer:", 0, 10);
-        g2d.drawString("You: ", 0, 260);  
+        g2d.setColor(Color.WHITE);
         
-        g2d.drawString("Balance:", 405, 470);
-        g2d.drawString(this.game.getBalance(), 470, 470);
+        g2d.setFont(new Font("default", Font.BOLD, 14));
+        g2d.drawString("Dealer:", 5, 15);
+        g2d.drawString("You: ", 5, 260);  
+        
+        g2d.drawString("Balance:", 575, 465);
+        g2d.drawString(this.game.getBalance(), 640, 465);
         
         if (this.game.noBet()){
             
-            g2d.drawString("Set your bet!", 230, 260);
+            g2d.drawString("Set your bet!", 338, 260);
         }
         
         if (this.game.win() && this.game.playerWin()){
             
             g2d.setFont(new Font("default", Font.BOLD, 25));
             g2d.setColor(new Color(92,225,80));
-            g2d.drawString("You win!", 230, 240);
+            g2d.drawString("You win!", 330, 240);
         } else if (this.game.win() && this.game.push()){
             
             g2d.setFont(new Font("default", Font.BOLD, 25));
-            g2d.setColor(new Color(237,62,53));
-            g2d.drawString("Push!", 230, 240);
+            g2d.setColor(Color.WHITE);
+            g2d.drawString("Push!", 330, 240);
         } else if (this.game.win()){
             
             g2d.setFont(new Font("default", Font.BOLD, 25));
             g2d.setColor(new Color(237,62,53));
-            g2d.drawString("You lost!", 230, 240);    
+            g2d.drawString("You lost!", 330, 240);    
         }
         
-        g2d.setColor(Color.black);
+        g2d.setColor(Color.white);
         g2d.setFont(new Font("default", Font.BOLD, 14));
         
         Image image;
-        
-        //g2d.drawImage(image, 80, 80, 100, 150, this);
-        
-        //images of cards or image and adding numbers with text
         
         int x = 20;
         
@@ -113,10 +103,6 @@ public class Draw extends JPanel{
             g2d.drawImage(image, x, 270, 120, 165, this);
             
             x += 140;
-            
-            /*g2d.drawString(Integer.toString(card.getValue()), x, 180);
-            
-            x += 20;*/
         }
         
         g2d.setFont(new Font("default", Font.BOLD, 18));
@@ -131,6 +117,15 @@ public class Draw extends JPanel{
         
         g2d.drawString("Total: " + Integer.toString(this.playerHand.value()), 25, 460);
         
+        
+        if (this.game.noCards()){
+            
+            g2d.setColor(new Color(7,99,36));
+            g2d.fillRect(280, 220, 150, 50);
+            
+            g2d.setColor(Color.WHITE);
+            g2d.drawString("Out of Cards!", 280, 250);
+        }
     }
     
     public void update(){

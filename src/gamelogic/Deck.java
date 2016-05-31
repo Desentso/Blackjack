@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gamelogic;
 
 import java.util.ArrayList;
 import static java.util.Arrays.asList;
-import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -37,8 +32,6 @@ public class Deck {
         
         Random rand = new Random();
         
-        //System.out.println(this.deck.size());
-        
         Card card = this.deck.get(rand.nextInt(this.deck.size()));
         
         this.deck.remove(card);
@@ -48,7 +41,7 @@ public class Deck {
     
     public boolean hasCards(){
         
-        if (this.deck.size() > 10){
+        if (this.deck.size() > 0){
             
             return true;
         } else {

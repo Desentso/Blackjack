@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gui;
 
 import gamelogic.Game;
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.WindowConstants;
 
 /**
  *
@@ -32,29 +24,6 @@ public class Gui implements Runnable{
         this.game = game;
     }
     
-    /*@Override
-    public void run() {
-        
-        this.frame = new JFrame();
-        
-        this.frame.setPreferredSize(new Dimension(600, 540));
-
-        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        createObjects(this.frame.getContentPane());
-
-        this.frame.pack();
-        this.frame.setVisible(true);
-    }
-    
-    public void createObjects(Container container){
-        
-        JButton stand = new JButton("Stand");
-        
-        container.add(stand, BorderLayout.NORTH);
-        container.add(this.draw);
-    }*/
-    
     @Override
     public void run(){
         
@@ -68,7 +37,7 @@ public class Gui implements Runnable{
         JLabel jLabel1 = new javax.swing.JLabel();
 
         this.frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        this.frame.setLocation(600, 150);
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -93,14 +62,16 @@ public class Gui implements Runnable{
         jButton1.setText("Hit");
         jButton1.addActionListener(new HitButtonListener(this.game));
         
+        //javax.swing.GroupLayout.DEFAULT_SIZE
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.frame.getContentPane());
         this.frame.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(5, 10, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,7 +84,7 @@ public class Gui implements Runnable{
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)
                         .addGap(20, 20, 20)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(5, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

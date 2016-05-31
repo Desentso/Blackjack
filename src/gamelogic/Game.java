@@ -2,15 +2,11 @@ package gamelogic;
 
 import gui.Draw;
 import gui.Gui;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -34,6 +30,8 @@ public class Game {
     private boolean win;
     private boolean push;
     
+    private boolean noCards;
+            
     public Game(){
         
         //this.draw = draw;
@@ -41,6 +39,8 @@ public class Game {
         
         this.playerHit = false;
         this.playerStand = false;
+        
+        this.noCards = false;
         
         this.balance = 1000;
     }
@@ -56,6 +56,18 @@ public class Game {
         this.noBet = true;
         
         Deck deck1 = new Deck();
+        Deck deck2 = new Deck();
+        Deck deck3 = new Deck();
+        Deck deck4 = new Deck();
+        
+        ArrayList<Deck> arrdecks = new ArrayList<>();
+        
+        arrdecks.add(deck1);
+        arrdecks.add(deck2);
+        arrdecks.add(deck3);
+        arrdecks.add(deck4);
+        
+        Decks decks = new Decks(arrdecks);
         
         this.playerHand = new Hand();
         this.dealerHand = new Hand();
@@ -63,17 +75,10 @@ public class Game {
         this.dealerHand.setShow(false);
         
         this.draw.setHands(this.dealerHand, this.playerHand);
+        
+        
+        while(decks.hasCards()){
             
-        while(deck1.hasCards()){
-            
-      /*      this.playerHand = new Hand();
-            this.dealerHand = new Hand();
-
-            this.draw.setHands(this.dealerHand, this.playerHand);
-           */ 
-            //this.draw.update();
-            
-            //this.noBet = true;
             
             if (this.balance == 0){
                 
@@ -99,14 +104,13 @@ public class Game {
             
             this.draw.setHands(this.dealerHand, this.playerHand);
             
-            this.playerHand.addCard(deck1.dealCard());
-            this.dealerHand.addCard(deck1.dealCard());
+            this.playerHand.addCard(decks.dealCard());
+            this.dealerHand.addCard(decks.dealCard());
 
-            this.playerHand.addCard(deck1.dealCard());
-            this.dealerHand.addCard(deck1.dealCard());
+            this.playerHand.addCard(decks.dealCard());
+            this.dealerHand.addCard(decks.dealCard());
 
             this.draw.update();
-            //System.out.println(playerHand.value());
             
             if (playerHand.value() == 21){
                 
@@ -137,7 +141,7 @@ public class Game {
                 
                 if(this.playerHit){
                     
-                    this.playerHand.addCard(deck1.dealCard());
+                    this.playerHand.addCard(decks.dealCard());
                     
                     this.draw.update();
                     this.playerHit = false;
@@ -166,7 +170,7 @@ public class Game {
                 
                 if(dealerHand.value() < 17){
                     
-                    dealerHand.addCard(deck1.dealCard());
+                    dealerHand.addCard(decks.dealCard());
                     this.draw.update();
                 } else {
 
@@ -217,6 +221,8 @@ public class Game {
         
         System.out.println("OUT OF CARDS!");
         
+        this.noCards = true;
+        this.draw.update();
     }
     
     public void playerHit(){
@@ -273,5 +279,16 @@ public class Game {
     public boolean push(){
         
         return this.push;
+    }
+    
+    public boolean noCards(){
+        
+        if (this.noCards){
+            
+            return true;
+        } else {
+            
+            return false;
+        }
     }
 }
