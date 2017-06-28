@@ -4,8 +4,6 @@ import gui.Draw;
 import gui.Gui;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**
@@ -122,7 +120,7 @@ public class Game {
                 
                 try {
 
-                    TimeUnit.SECONDS.sleep(2);
+                    TimeUnit.SECONDS.sleep(0);
                 } catch (InterruptedException ex) {
 
                     Thread.currentThread().interrupt();
@@ -209,7 +207,7 @@ public class Game {
             
             try {
                 
-                TimeUnit.SECONDS.sleep(2);
+                TimeUnit.SECONDS.sleep(0);
             } catch (InterruptedException ex) {
                 
                 Thread.currentThread().interrupt();
